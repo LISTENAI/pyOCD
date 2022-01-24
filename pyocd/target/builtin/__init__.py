@@ -16,6 +16,7 @@
 
 from ...coresight.coresight_target import CoreSightTarget
 from ..family import target_kinetis
+from . import target_CSK6
 from . import target_MIMXRT1011xxxxx
 from . import target_MIMXRT1015xxxxx
 from . import target_MIMXRT1021xxxxx
@@ -127,6 +128,8 @@ from . import target_RP2040
 # @note Target type names must be all lowercase and use _underscores_ instead of dashes. The code in Board
 #   automatically converts dashes in user-supplied target type names to underscores.
 BUILTIN_TARGETS = {
+          'csk6' : target_CSK6.CSK6,
+          'csk6001': target_CSK6.CSK6,
           'mps3_an522': target_MPS3_AN522.AN522,
           'mps3_an540': target_MPS3_AN540.AN540,
           'cortex_m': CoreSightTarget,
