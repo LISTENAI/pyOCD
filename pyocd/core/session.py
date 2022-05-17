@@ -252,7 +252,9 @@ class Session(Notifier):
         # Look for default filenames if a path wasn't provided.
         if filePath is None:
             for filename in filename_list:
-                thisPath = os.path.join(self.project_dir, filename)
+                thisPath = os.path.expanduser(filename)
+                if not os.path.isabs(thisPath):
+                    thisPath = os.path.join(self.project_dir, filename)
                 if os.path.isfile(thisPath):
                     filePath = thisPath
                     break
@@ -436,6 +438,7 @@ class Session(Notifier):
             'RunType': target.Target.RunType,
             'HaltReason': target.Target.HaltReason,
             'ResetType': target.Target.ResetType,
+            'MemoryLoader': loader.MemoryLoader,
             'MemoryType': memory_map.MemoryType,
             'MemoryMap': memory_map.MemoryMap,
             'RamRegion': memory_map.RamRegion,
@@ -444,7 +447,7 @@ class Session(Notifier):
             'DeviceRegion': memory_map.DeviceRegion,
             'FileProgrammer': file_programmer.FileProgrammer,
             'FlashEraser': eraser.FlashEraser,
-            'FlashLoader': loader.FlashLoader,
+            'FlashLoader': loader.FlashLoader, # deprecated
             # User script info
             '__name__': script_name,
             '__file__': script_path,
