@@ -195,25 +195,20 @@ FLASH_ALGO = {
     'pc_eraseAll': 0x2000004f,
 
     'static_base' : 0x20000000 + 0x00000004 + 0x0000141c,
-    'begin_stack' : 0x20004440,
-    'end_stack' : 0x20003440,
+    'begin_stack' : 0x20001638,
     'begin_data' : 0x20000000 + 0x1000,
     'page_size' : 0x1000,
     'analyzer_supported' : False,
     'analyzer_address' : 0x00000000,
-    # Enable double buffering
-    'page_buffers' : [
-        0x20001440,
-        0x20002440
-    ],
+    'page_buffers' : [0x20001000, 0x20002000],   # Enable double buffering
     'min_program_length' : 0x1000,
 
     # Relative region addresses and sizes
-    'ro_start': 0x4,
+    'ro_start': 0x0,
     'ro_size': 0x141c,
-    'rw_start': 0x1420,
+    'rw_start': 0x141c,
     'rw_size': 0x14,
-    'zi_start': 0x1434,
+    'zi_start': 0x1430,
     'zi_size': 0xc,
 
     # Flash information
